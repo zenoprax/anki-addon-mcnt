@@ -1,5 +1,17 @@
 This add-on provide a Multiple Choice Note Type
 
+#### Radio Format
+
+<img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/radio_incorrect.gif" width="700"> 
+
+#### Checkbox Format
+
+<img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/checkbox.gif" width="700"> 
+
+#### Shuffle Enabled
+
+<img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/checkbox_shuffle.gif" width="700"> 
+
 ### Fields
 
 - **number**: Question Number
@@ -9,12 +21,22 @@ This add-on provide a Multiple Choice Note Type
 - **ref**: Reference
 - **explanation**: Explanation Box
 
+#### Example - Radio Format
+
+<img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/radio_fields.png" width="700"> 
+
+#### Example - Checkbox Format
+
+<img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/checkbox_fields.png" width="700">  
+
 ### Configuration
 
 Change the order of the list of answers. ( Tools -> Add-ons -> Select "Multiple Choice Note Type" -> Config)
 
 - **Default** - The list of choices is displayed in a fixed order. ( Chnage `isShuffle` value to `false` )
 - The list of choices is displayed in a shuffle order. ( Chnage `isShuffle` value to `true` )
+
+<img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/config.png" width="700"> 
 
 ### Chnagelog
 
