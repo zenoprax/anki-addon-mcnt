@@ -31,6 +31,12 @@ This add-on provide a Multiple Choice Note Type in Anki ([Link](https://ankiweb.
 
 <img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/checkbox_fields.png" width="700">  
 
+#### Example - Limit The Number of Choice
+
+- You may leave the answer field empty to hide the choice.
+
+<img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/empty_fields.png" width="700">
+
 ### Configuration
 
 Change the order of the list of answers. ( Tools -> Add-ons -> Select "Multiple Choice Note Type" -> Config)
