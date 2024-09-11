@@ -11,7 +11,7 @@
 
 	function returnTemplate(inputType, index, id, answer) {
 		var result = '<div class="answer-div">';
-		result += '<div><input type="' + inputType + '" onclick="selectAnswer();" id="' + id + '" /></div>';
+		result += '<div><input type="' + inputType + '" onclick="selectAnswer();" name="SelectedAnswer" id="' + id + '" /></div>';
 		result += '<div>' + String.fromCharCode(index + 65)+ '.</div>';
 		result += '<div><label for="' + id + '">' + answer + '</label></div>';
 		result += '<div></div>';

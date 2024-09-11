@@ -51,3 +51,7 @@ Change the order of the list of answers. ( Tools -> Add-ons -> Select "Multiple 
 V1.0.0 - 2024-08-28
 
 - First Release of **Multiple Choice Note Type**
+
+V1.0.1 - 2024-09-11
+
+- Bugfix - Only one radio button allow select
