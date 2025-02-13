@@ -14,14 +14,17 @@
 
 {{#answers}}<p id="display-answers"></p>{{/answers}}
 {{#ref}}<p><b>Ref: </b>{{ref}}</p>{{/ref}}
-{{#explanation}}<fieldset><legend><b>Explanation:</b></legend>{{explanation}}</fieldset>{{/explanation}}
+{{#explanation}}<fieldset><legend><b>Explanation: {{tts en_US speed=0.8 voices=Apple_Samantha,Microsoft_Haruka:explanation}}</b></legend>{{explanation}}</fieldset>{{/explanation}}
 
 <script>
 
-	function returnTemplate(inputType, index, id, answer, checked, a ,b) {
+	function returnTemplate(inputType, index, id, answer, checked, a ,b, displayAnswerLetters) {
 		var result = '<div class="answer-div ' + a + '">';
 		result += '<div><input type="' + inputType + '" class="disabled-input" id="' + id + '" ' + checked + ' /></div>';
-		result += '<div>' + String.fromCharCode(index + 65)+ '.</div>';
+		if (displayAnswerLetters)
+			result += '<div>' + String.fromCharCode(index + 65)+ '.</div>';
+		else
+			result += '<div>&nbsp;</div>';
 		result += '<div><label for="' + id + '">' + answer + '</label></div>';
 		result += '<div class="' + b + '"></div>';
 		result += '</div>';
@@ -71,7 +74,7 @@
 			var checkAnswerResult = checkAnswer(divArray[i]);
 			if (checkAnswerResult == "correct" || checkAnswerResult == "missed") 
 				answerDisplayArray.push(String.fromCharCode(i + 65));
-			answerDiv.innerHTML += returnTemplate(inputType, i, answerJson[divArray[i]].id, answerJson[divArray[i]].answer, checked, checkAnswerResult + "-background", checkAnswerResult);
+			answerDiv.innerHTML += returnTemplate(inputType, i, answerJson[divArray[i]].id, answerJson[divArray[i]].answer, checked, checkAnswerResult + "-background", checkAnswerResult, isDisplayAnswerLetters);
 		}
 
 	}

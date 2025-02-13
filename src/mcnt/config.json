@@ -1,3 +1,4 @@
 {
-    "isShuffle": false
+    "isShuffle": false,
+    "isDisplayAnswerLetters": true
 }

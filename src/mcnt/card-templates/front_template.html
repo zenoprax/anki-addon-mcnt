@@ -4,15 +4,24 @@
 </script>
 
 {{#number}}<h3>Question #{{number}}</h3>{{/number}}
-{{#question}}<p>{{question}}</p>{{/question}}
+{{#question}}
+<div class="question-div">
+	<div>{{tts en_US speed=0.8 voices=Apple_Samantha,Microsoft_Haruka:question}}</div>
+	<div>{{question}}</div>
+</div>
+{{/question}}
+<br/>
 <div id="answer-div"></div>
 
 <script>
 
-	function returnTemplate(inputType, index, id, answer) {
+	function returnTemplate(inputType, index, id, answer, displayAnswerLetters) {
 		var result = '<div class="answer-div">';
 		result += '<div><input type="' + inputType + '" onclick="selectAnswer();" name="SelectedAnswer" id="' + id + '" /></div>';
-		result += '<div>' + String.fromCharCode(index + 65)+ '.</div>';
+		if (displayAnswerLetters)
+			result += '<div>' + String.fromCharCode(index + 65)+ '.</div>';
+		else
+			result += '<div>&nbsp;</div>';
 		result += '<div><label for="' + id + '">' + answer + '</label></div>';
 		result += '<div></div>';
 		result += '</div>';
@@ -74,7 +83,7 @@
 	for (var i = 0; i < answerJson.length; i++) {
 		divArray.push(answerJson[i].id);
 		var inputType = answersArray.length > 1 ? "checkbox" : "radio";
-		answerDiv.innerHTML += returnTemplate(inputType, i, answerJson[i].id, answerJson[i].answer);
+		answerDiv.innerHTML += returnTemplate(inputType, i, answerJson[i].id, answerJson[i].answer, isDisplayAnswerLetters);
 	}
 
 	if (Persistence.isAvailable()) {

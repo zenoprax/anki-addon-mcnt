@@ -44,6 +44,11 @@ Change the order of the list of answers. ( Tools -> Add-ons -> Select "Multiple 
 - **Default** - The list of choices is displayed in a fixed order. ( Chnage `isShuffle` value to `false` )
 - The list of choices is displayed in a shuffle order. ( Chnage `isShuffle` value to `true` )
 
+Change the display of letters of answers. ( Tools -> Add-ons -> Select "Multiple Choice Note Type" -> Config)
+
+- **Default** - The list of choices is displayed with letters. ( Chnage `isDisplayAnswerLetters` value to `true` )
+- The list of choices is displayed without letters. ( Chnage `isDisplayAnswerLetters` value to `false` )
+
 <img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/config.png" width="700"> 
 
 ### Chnagelog
@@ -55,3 +60,7 @@ V1.0.0 - 2024-08-28
 V1.0.1 - 2024-09-11
 
 - Bugfix - Only one radio button allow select
+
+V1.0.2 - 2025-02-13
+
+- Enhance - Change the display of letters of answers

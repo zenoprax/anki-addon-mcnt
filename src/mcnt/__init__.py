@@ -51,12 +51,19 @@ def create_note_type(col: Collection) -> dict[str, Any]:
     col.models.add_template(model, template)
 
     front_template = load_template(front_template_path)
-    if config["isShuffle"]:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","true")
+    if config["isShuffle"] is True and config["isDisplayAnswerLetters"] is True:
+        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","true").replace("isDisplayAnswerLetters","true")
+    elif config["isShuffle"] is True and config["isDisplayAnswerLetters"] is False:
+        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","true").replace("isDisplayAnswerLetters","false")
+    elif config["isShuffle"] is False and config["isDisplayAnswerLetters"] is True:
+        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","false").replace("isDisplayAnswerLetters","true")
     else:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","false")
+        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","false").replace("isDisplayAnswerLetters","false")
     back_template = load_template(back_template_path)
-    model["tmpls"][0]["afmt"] = back_template
+    if config["isDisplayAnswerLetters"] is True:
+        model["tmpls"][0]["afmt"] = back_template.replace("isDisplayAnswerLetters","true")
+    else:
+        model["tmpls"][0]["afmt"] = back_template.replace("isDisplayAnswerLetters","false")
     styling = load_template(styling_template_path)
     model["css"] = styling
 
@@ -72,12 +79,19 @@ def update_note_type(col: Collection) -> dict[str, Any]:
 
     # Update Card Template
     front_template = load_template(front_template_path)
-    if config["isShuffle"]:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","true")
+    if config["isShuffle"] is True and config["isDisplayAnswerLetters"] is True:
+        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","true").replace("isDisplayAnswerLetters","true")
+    elif config["isShuffle"] is True and config["isDisplayAnswerLetters"] is False:
+        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","true").replace("isDisplayAnswerLetters","false")
+    elif config["isShuffle"] is False and config["isDisplayAnswerLetters"] is True:
+        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","false").replace("isDisplayAnswerLetters","true")
     else:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","false")
+        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","false").replace("isDisplayAnswerLetters","false")
     back_template = load_template(back_template_path)
-    model["tmpls"][0]["afmt"] = back_template
+    if config["isDisplayAnswerLetters"] is True:
+        model["tmpls"][0]["afmt"] = back_template.replace("isDisplayAnswerLetters","true")
+    else:
+        model["tmpls"][0]["afmt"] = back_template.replace("isDisplayAnswerLetters","false")
     styling = load_template(styling_template_path)
     model["css"] = styling
 
