@@ -4,8 +4,8 @@ from anki.consts import MODEL_STD
 from functools import cache
 from typing import Any
 
-mcnt_model_name = "Multiple Choice Note Type (Test)"
-mcnt_card_name = "Multiple Choice Card (Test)"
+mcnt_model_name = "Multiple Choice Note Type"
+mcnt_card_name = "Multiple Choice Card"
 
 front_template_path = "card-templates/front_template.html"
 back_template_path = "card-templates/back_template.html"
