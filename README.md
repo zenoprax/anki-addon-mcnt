@@ -61,7 +61,7 @@ Tools -> Add-ons -> Select "Multiple Choice Note Type" -> Config
 #### Change voice language of text to speech.
 
 - **Default** - Use English (United States) as voice language. ( Chnage `TTSLang` value to `en_US` )
-- Language Code Example: https://learn.microsoft.com/en-us/linkedin/shared/references/reference-tables/language-codes
+- Language Code Example: [https://learn.microsoft.com/en-us/linkedin/shared/references/reference-tables/language-codes](https://learn.microsoft.com/en-us/linkedin/shared/references/reference-tables/language-codes)
 
 <img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/config.png" width="700"> 
 
@@ -71,7 +71,7 @@ Tools -> Add-ons -> Select "Multiple Choice Note Type" -> Config
 
 <img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/audio.png" width="700">
 
-### Chnagelog
+### Changelog
 
 V1.0.0 - 2024-08-28
 
