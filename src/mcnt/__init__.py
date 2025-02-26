@@ -4,8 +4,8 @@ from anki.consts import MODEL_STD
 from functools import cache
 from typing import Any
 
-mcnt_model_name = "Multiple Choice Note Type"
-mcnt_card_name = "Multiple Choice Card"
+mcnt_model_name = "Multiple Choice Note Type (Test)"
+mcnt_card_name = "Multiple Choice Card (Test)"
 
 front_template_path = "card-templates/front_template.html"
 back_template_path = "card-templates/back_template.html"
@@ -50,20 +50,62 @@ def create_note_type(col: Collection) -> dict[str, Any]:
     template = col.models.new_template(mcnt_card_name)
     col.models.add_template(model, template)
 
+    if "isShuffle" in config:
+        if isinstance(config["isShuffle"], bool):
+            isShuffle = config["isShuffle"]
+        else:
+            isShuffle = False
+    else:
+        isShuffle = False
+
+    if "isDisplayAnswerLetters" in config:
+        if isinstance(config["isDisplayAnswerLetters"], bool):
+            isDisplayAnswerLetters = config["isDisplayAnswerLetters"]
+        else:
+            isDisplayAnswerLetters = False
+    else:
+        isDisplayAnswerLetters = False
+
+    if "isTTS" in config:
+        if isinstance(config["isTTS"], bool):
+            isTTS = config["isTTS"]
+        else:
+            isTTS = False
+    else:
+        isTTS = False
+
+    if "TTSLang" in config:
+        if isinstance(config["TTSLang"], str):
+            TTSLang = config["TTSLang"]
+        else:
+            TTSLang = "en_US"
+    else:
+        TTSLang = "en_US"
+    
     front_template = load_template(front_template_path)
-    if config["isShuffle"] is True and config["isDisplayAnswerLetters"] is True:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","true").replace("isDisplayAnswerLetters","true")
-    elif config["isShuffle"] is True and config["isDisplayAnswerLetters"] is False:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","true").replace("isDisplayAnswerLetters","false")
-    elif config["isShuffle"] is False and config["isDisplayAnswerLetters"] is True:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","false").replace("isDisplayAnswerLetters","true")
+    if isShuffle is True:
+        front_template = front_template.replace("isShuffle","true")
     else:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","false").replace("isDisplayAnswerLetters","false")
+        front_template = front_template.replace("isShuffle","false")
+    if isDisplayAnswerLetters is True:
+        front_template = front_template.replace("isDisplayAnswerLetters","true")
+    else:
+        front_template = front_template.replace("isDisplayAnswerLetters","false")
+    if isTTS is False:
+        front_template = front_template.replace("<div id=\"tts\">{{tts TTSLang speed=0.8 voices=Apple_Samantha,Microsoft_Haruka:question}}</div>","<div id=\"tts\" style=\"width: 0px\"></div>")
+    front_template = front_template.replace("TTSLang",TTSLang)
+    model["tmpls"][0]["qfmt"] = front_template
+
     back_template = load_template(back_template_path)
-    if config["isDisplayAnswerLetters"] is True:
-        model["tmpls"][0]["afmt"] = back_template.replace("isDisplayAnswerLetters","true")
+    if isDisplayAnswerLetters is True:
+        back_template = back_template.replace("isDisplayAnswerLetters","true")
     else:
-        model["tmpls"][0]["afmt"] = back_template.replace("isDisplayAnswerLetters","false")
+        back_template = back_template.replace("isDisplayAnswerLetters","false")
+    if isTTS is False:
+        back_template = back_template.replace("<legend id=\"tts\"><b>Explanation: {{tts TTSLang speed=0.8 voices=Apple_Samantha,Microsoft_Haruka:explanation}}</b></legend>","<legend id=\"tts\"><b>Explanation: </b></legend>")
+    back_template = back_template.replace("TTSLang",TTSLang)
+    model["tmpls"][0]["afmt"] = back_template
+
     styling = load_template(styling_template_path)
     model["css"] = styling
 
@@ -78,20 +120,62 @@ def update_note_type(col: Collection) -> dict[str, Any]:
     print(f"Updating {mcnt_model_name} note type")
 
     # Update Card Template
+    if "isShuffle" in config:
+        if isinstance(config["isShuffle"], bool):
+            isShuffle = config["isShuffle"]
+        else:
+            isShuffle = False
+    else:
+        isShuffle = False
+
+    if "isDisplayAnswerLetters" in config:
+        if isinstance(config["isDisplayAnswerLetters"], bool):
+            isDisplayAnswerLetters = config["isDisplayAnswerLetters"]
+        else:
+            isDisplayAnswerLetters = False
+    else:
+        isDisplayAnswerLetters = False
+
+    if "isTTS" in config:
+        if isinstance(config["isTTS"], bool):
+            isTTS = config["isTTS"]
+        else:
+            isTTS = False
+    else:
+        isTTS = False
+
+    if "TTSLang" in config:
+        if isinstance(config["TTSLang"], str):
+            TTSLang = config["TTSLang"]
+        else:
+            TTSLang = "en_US"
+    else:
+        TTSLang = "en_US"
+    
     front_template = load_template(front_template_path)
-    if config["isShuffle"] is True and config["isDisplayAnswerLetters"] is True:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","true").replace("isDisplayAnswerLetters","true")
-    elif config["isShuffle"] is True and config["isDisplayAnswerLetters"] is False:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","true").replace("isDisplayAnswerLetters","false")
-    elif config["isShuffle"] is False and config["isDisplayAnswerLetters"] is True:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","false").replace("isDisplayAnswerLetters","true")
+    if isShuffle is True:
+        front_template = front_template.replace("isShuffle","true")
     else:
-        model["tmpls"][0]["qfmt"] = front_template.replace("isShuffle","false").replace("isDisplayAnswerLetters","false")
+        front_template = front_template.replace("isShuffle","false")
+    if isDisplayAnswerLetters is True:
+        front_template = front_template.replace("isDisplayAnswerLetters","true")
+    else:
+        front_template = front_template.replace("isDisplayAnswerLetters","false")
+    if isTTS is False:
+        front_template = front_template.replace("<div id=\"tts\">{{tts TTSLang speed=0.8 voices=Apple_Samantha,Microsoft_Haruka:question}}</div>","<div id=\"tts\" style=\"width: 0px\"></div>")
+    front_template = front_template.replace("TTSLang",TTSLang)
+    model["tmpls"][0]["qfmt"] = front_template
+
     back_template = load_template(back_template_path)
-    if config["isDisplayAnswerLetters"] is True:
-        model["tmpls"][0]["afmt"] = back_template.replace("isDisplayAnswerLetters","true")
+    if isDisplayAnswerLetters is True:
+        back_template = back_template.replace("isDisplayAnswerLetters","true")
     else:
-        model["tmpls"][0]["afmt"] = back_template.replace("isDisplayAnswerLetters","false")
+        back_template = back_template.replace("isDisplayAnswerLetters","false")
+    if isTTS is False:
+        back_template = back_template.replace("<legend id=\"tts\"><b>Explanation: {{tts TTSLang speed=0.8 voices=Apple_Samantha,Microsoft_Haruka:explanation}}</b></legend>","<legend id=\"tts\"><b>Explanation: </b></legend>")
+    back_template = back_template.replace("TTSLang",TTSLang)
+    model["tmpls"][0]["afmt"] = back_template
+
     styling = load_template(styling_template_path)
     model["css"] = styling
 

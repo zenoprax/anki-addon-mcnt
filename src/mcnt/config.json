@@ -1,4 +1,6 @@
 {
     "isShuffle": false,
-    "isDisplayAnswerLetters": true
+    "isDisplayAnswerLetters": true,
+    "isTTS": true,
+    "TTSLang": "en_US"
 }

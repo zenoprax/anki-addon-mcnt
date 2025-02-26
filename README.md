@@ -39,17 +39,37 @@ This add-on provide a Multiple Choice Note Type in Anki ([Link](https://ankiweb.
 
 ### Configuration
 
-Change the order of the list of answers. ( Tools -> Add-ons -> Select "Multiple Choice Note Type" -> Config)
+#### How? 
+
+Tools -> Add-ons -> Select "Multiple Choice Note Type" -> Config
+
+#### Change the order of the list of answers.
 
 - **Default** - The list of choices is displayed in a fixed order. ( Chnage `isShuffle` value to `false` )
 - The list of choices is displayed in a shuffle order. ( Chnage `isShuffle` value to `true` )
 
-Change the display of letters of answers. ( Tools -> Add-ons -> Select "Multiple Choice Note Type" -> Config)
+#### Change the display of letters of answers.
 
 - **Default** - The list of choices is displayed with letters. ( Chnage `isDisplayAnswerLetters` value to `true` )
 - The list of choices is displayed without letters. ( Chnage `isDisplayAnswerLetters` value to `false` )
 
+#### Enable / Disable text to speech.
+
+- **Default** - Enable text to speech. ( Chnage `isTTS` value to `true` )
+- Disable text to speech. ( Chnage `isTTS` value to `false` )
+
+#### Change voice language of text to speech.
+
+- **Default** - Use English (United States) as voice language. ( Chnage `TTSLang` value to `en_US` )
+- Language Code Example: https://learn.microsoft.com/en-us/linkedin/shared/references/reference-tables/language-codes
+
 <img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/config.png" width="700"> 
+
+#### How to set "Don't play audio automatically"
+
+- In the deck `options`, Enable `Don't play audio automatically` under `Audio` section. 
+
+<img src="https://raw.githubusercontent.com/jasonlws/anki-addon-mcnt/master/resources/audio.png" width="700">
 
 ### Chnagelog
 
@@ -64,3 +84,8 @@ V1.0.1 - 2024-09-11
 V1.0.2 - 2025-02-13
 
 - Enhance - Change the display of letters of answers
+
+V1.0.3 - 2025-02-26
+
+- Enhance - Allow to enable / disable text to speech
+- Enhance - Allow to change voice language
